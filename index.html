@@ -16,13 +16,58 @@
             --text-main: #CCD6F6;
             --text-muted: #8892B0;
         }
-        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--midnight-bg); color: var(--text-main); }
-        .hero-section {
-            background: radial-gradient(circle at top right, rgba(103, 58, 183, 0.1), transparent),
-                        radial-gradient(circle at bottom left, rgba(33, 150, 243, 0.1), transparent);
-            padding: 120px 0;
+        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--midnight-bg); color: var(--text-main); overflow-x: hidden; }
+
+        /* MAGIC BACKGROUND ANIMATION */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(103, 58, 183, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(33, 150, 243, 0.08) 0%, transparent 40%);
+            z-index: -1;
+            animation: nebulaFlow 20s ease-in-out infinite alternate;
         }
-        .navbar { background-color: rgba(10, 25, 47, 0.9) !important; backdrop-filter: blur(10px); }
+
+        @keyframes nebulaFlow {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(2%, 2%); }
+        }
+
+        .hero-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* FLOATING HERO ELEMENTS */
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* TWINKLING STARS (App-Mirror) */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        .navbar { background-color: rgba(10, 25, 47, 0.8) !important; backdrop-filter: blur(15px); }
         .navbar-brand { font-weight: 800; color: white !important; letter-spacing: 1px; }
         .btn-magic {
             background: var(--wisdom-gold);
@@ -91,10 +136,17 @@
 
     <!-- Hero Section -->
     <header class="hero-section">
+        <!-- Background Stars -->
+        <div class="star" style="top: 15%; left: 10%; width: 2px; height: 2px; --duration: 3s;"></div>
+        <div class="star" style="top: 25%; left: 85%; width: 3px; height: 3px; --duration: 5s;"></div>
+        <div class="star" style="top: 70%; left: 15%; width: 2px; height: 2px; --duration: 4s;"></div>
+        <div class="star" style="top: 85%; left: 75%; width: 3px; height: 3px; --duration: 7s;"></div>
+        <div class="star" style="top: 40%; left: 50%; width: 1px; height: 1px; --duration: 2s;"></div>
+
         <div class="container text-center text-lg-start">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="mb-4">
+                    <div class="mb-4 floating-element" style="animation-delay: 1s;">
                         <svg class="logo-svg" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="256" cy="256" r="200" fill="url(#glow_grad)" opacity="0.15"/>
                             <defs>
@@ -121,7 +173,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 mt-5 mt-lg-0 text-center">
-                    <img src="https://via.placeholder.com/300x600/112240/FFD700?text=Medication+Wizard" alt="App Screenshot" class="app-screenshot img-fluid">
+                    <img src="https://via.placeholder.com/300x600/112240/FFD700?text=Medication+Wizard" alt="App Screenshot" class="app-screenshot img-fluid floating-element">
                 </div>
             </div>
         </div>
