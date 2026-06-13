@@ -3,69 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wise Medical Apps | Smart Health Companions</title>
+    <title>Wise Medical Apps | Innovative Health Technology</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         :root {
-            --magic-purple: #673AB7;
-            --magic-blue: #2196F3;
-            --magic-glow: rgba(103, 58, 183, 0.1);
+            --midnight-bg: #0A192F;
+            --midnight-card: #112240;
+            --cyber-blue: #4FC3F7;
+            --magic-lavender: #B39DDB;
+            --wisdom-gold: #FFD700;
+            --text-main: #CCD6F6;
+            --text-muted: #8892B0;
         }
-        body { font-family: 'Inter', -apple-system, sans-serif; color: #333; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--midnight-bg); color: var(--text-main); }
         .hero-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 100px 0;
-            overflow: hidden;
+            background: radial-gradient(circle at top right, rgba(103, 58, 183, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(33, 150, 243, 0.1), transparent);
+            padding: 120px 0;
         }
-        .navbar-brand { font-weight: 800; color: var(--magic-purple) !important; }
+        .navbar { background-color: rgba(10, 25, 47, 0.9) !important; backdrop-filter: blur(10px); }
+        .navbar-brand { font-weight: 800; color: white !important; letter-spacing: 1px; }
         .btn-magic {
-            background: var(--magic-purple);
-            color: white;
-            border-radius: 30px;
+            background: var(--wisdom-gold);
+            color: var(--midnight-bg);
+            border-radius: 8px;
             padding: 12px 30px;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             border: none;
         }
         .btn-magic:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px var(--magic-glow);
-            background: #5E35B1;
-            color: white;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+            background: #e6c200;
+            color: var(--midnight-bg);
         }
         .feature-card {
-            border: none;
+            border: 1px solid rgba(100, 255, 218, 0.1);
             border-radius: 20px;
-            padding: 30px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            padding: 40px;
+            background: var(--midnight-card);
+            transition: all 0.3s;
             height: 100%;
         }
-        .feature-card:hover { transform: translateY(-10px); }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--cyber-blue); }
         .feature-icon {
             font-size: 2.5rem;
-            color: var(--magic-purple);
+            color: var(--wisdom-gold);
             margin-bottom: 20px;
         }
-        .footer { background: #1a1a1a; color: white; padding: 60px 0; }
-        .footer a { color: #aaa; text-decoration: none; transition: color 0.3s; }
-        .footer a:hover { color: white; }
+        .footer { background: #060e1f; color: var(--text-muted); padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        .footer a:hover { color: var(--wisdom-gold); }
         .app-screenshot {
             border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            max-width: 300px;
-            border: 8px solid #333;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            max-width: 320px;
+            border: 4px solid var(--midnight-card);
         }
+        .section-title { color: white; font-weight: 800; margin-bottom: 1rem; }
+        .accent-line { width: 60px; height: 4px; background: var(--wisdom-gold); margin: 0 auto 30px; border-radius: 2px; }
+        .logo-svg { width: 180px; height: auto; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">WISE MEDICAL APPS</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                WISE MEDICAL APPS
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,7 +83,7 @@
                     <li class="nav-item"><a class="nav-link" href="#apps">Our Apps</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://medicianhealthy.github.io/privacy-policy/index.html">Privacy</a></li>
-                    <li class="nav-item"><a class="ms-lg-3 btn btn-magic" href="#">Download Now</a></li>
+                    <li class="nav-item"><a class="ms-lg-3 btn btn-magic" href="#">Get the App</a></li>
                 </ul>
             </div>
         </div>
@@ -85,47 +94,64 @@
         <div class="container text-center text-lg-start">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold mb-4">Medication Management with a <span style="color: var(--magic-purple);">Touch of Magic</span></h1>
-                    <p class="lead mb-5 text-secondary">The Medication Wizard helps you track your health journey with smart reminders, beautiful insights, and a focus on privacy.</p>
+                    <div class="mb-4">
+                        <svg class="logo-svg" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="256" cy="256" r="200" fill="url(#glow_grad)" opacity="0.15"/>
+                            <defs>
+                              <linearGradient id="glow_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#673AB7;" />
+                                <stop offset="100%" style="stop-color:#2196F3;" />
+                              </linearGradient>
+                              <linearGradient id="line_grad" x1="0%" y1="50%" x2="100%" y2="50%">
+                                <stop offset="0%" style="stop-color:#4FC3F7;" />
+                                <stop offset="100%" style="stop-color:#B39DDB;" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M120 300 C 160 300, 180 120, 220 120 C 260 120, 280 240, 320 240 C 360 240, 380 80, 420 80"
+                                  stroke="url(#line_grad)" stroke-width="24" stroke-linecap="round" fill="none" opacity="0.9"/>
+                            <path d="M220 60 L226 80 L245 85 L226 90 L220 110 L214 90 L195 85 L214 80 Z" fill="#FFD700"/>
+                            <path d="M420 30 L424 45 L440 50 L424 55 L420 70 L416 55 L400 50 L416 45 Z" fill="#FFD700"/>
+                        </svg>
+                    </div>
+                    <h1 class="display-3 fw-bold mb-4" style="color: white;">Smart Health, <br><span style="color: var(--wisdom-gold);">Masterfully Crafted.</span></h1>
+                    <p class="lead mb-5" style="color: var(--text-muted);">Wise Medical Apps bridges the gap between clinical precision and digital magic, empowering your health journey.</p>
                     <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                        <a href="#" class="btn btn-dark btn-lg px-4 py-3"><i class="bi bi-google-play me-2"></i>Google Play</a>
-                        <a href="#features" class="btn btn-outline-dark btn-lg px-4 py-3">Learn More</a>
+                        <a href="#" class="btn btn-outline-light btn-lg px-4 py-3"><i class="bi bi-google-play me-2 text-warning"></i>Google Play</a>
+                        <a href="#features" class="btn btn-magic btn-lg px-4 py-3">Explore Magic</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <img src="https://via.placeholder.com/300x600/673AB7/FFFFFF?text=Medication+Wizard" alt="App Screenshot" class="app-screenshot img-fluid">
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                    <img src="https://via.placeholder.com/300x600/112240/FFD700?text=Medication+Wizard" alt="App Screenshot" class="app-screenshot img-fluid">
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Features Section -->
-    <section id="features" class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold">Magic in Every Pill</h2>
-                <p class="text-secondary">Designed to keep you healthy, organized, and ahead of your schedule.</p>
-            </div>
-            <div class="row g-4">
+    <section id="features" class="py-5">
+        <div class="container py-5 text-center">
+            <h2 class="section-title">The Foundation of Wisdom</h2>
+            <div class="accent-line"></div>
+            <div class="row g-4 mt-4">
                 <div class="col-md-4">
-                    <div class="feature-card text-center">
+                    <div class="feature-card">
                         <i class="bi bi-stars feature-icon"></i>
-                        <h3>Wizard Reminders</h3>
-                        <p class="text-secondary">Smart notifications that respect your sleep patterns and ensure you never miss a dose.</p>
+                        <h4 class="text-white">Magical Reminders</h4>
+                        <p class="small" style="color: var(--text-muted);">Smart notifications that respect your sleep patterns and ensure you never miss a dose.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <i class="bi bi-shield-check feature-icon"></i>
-                        <h3>Privacy First</h3>
-                        <p class="text-secondary">Your medical data belongs to you. We use local storage and secure cloud backups.</p>
+                    <div class="feature-card">
+                        <i class="bi bi-shield-lock feature-icon"></i>
+                        <h4 class="text-white">Absolute Privacy</h4>
+                        <p class="small" style="color: var(--text-muted);">Your medical data never leaves your device. We believe your health is your business.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <i class="bi bi-graph-up-arrow feature-icon"></i>
-                        <h3>Health Insights</h3>
-                        <p class="text-secondary">Beautiful charts and streaks to help you visualize your progress over time.</p>
+                    <div class="feature-card">
+                        <i class="bi bi-lightning-charge feature-icon"></i>
+                        <h4 class="text-white">Insightful Analytics</h4>
+                        <p class="small" style="color: var(--text-muted);">Visualize your progress with beautiful charts designed to help you stay on track.</p>
                     </div>
                 </div>
             </div>
@@ -133,10 +159,10 @@
     </section>
 
     <!-- Support Section -->
-    <section id="support" class="py-5 bg-light">
+    <section id="support" class="py-5" style="background: var(--midnight-card);">
         <div class="container py-5 text-center">
-            <h2 class="mb-4">Need Help with the Magic?</h2>
-            <p class="lead mb-4">Our support team (and wizards) are here to help you.</p>
+            <h2 class="text-white mb-4">Need Help with the Magic?</h2>
+            <p class="lead mb-4" style="color: var(--text-muted);">Our specialized support wizards are standing by to assist you.</p>
             <a href="mailto:medicationwizard@gmail.com" class="btn btn-magic btn-lg">Contact Magic Support</a>
         </div>
     </section>
@@ -146,11 +172,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="fw-bold mb-3">WISE MEDICAL APPS</h5>
-                    <p class="text-secondary small">Empowering patients through smart, magical, and intuitive mobile health solutions.</p>
+                    <h5 class="fw-bold mb-3 text-white">WISE MEDICAL APPS</h5>
+                    <p class="small">Pioneering the next generation of intuitive, patient-centered mobile health solutions.</p>
                 </div>
                 <div class="col-lg-2 offset-lg-2 mb-4">
-                    <h6 class="fw-bold mb-3">Company</h6>
+                    <h6 class="fw-bold mb-3 text-white text-uppercase small">Company</h6>
                     <ul class="list-unstyled">
                         <li><a href="#">About Us</a></li>
                         <li><a href="#apps">Our Apps</a></li>
@@ -158,14 +184,14 @@
                     </ul>
                 </div>
                 <div class="col-lg-2 mb-4">
-                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <h6 class="fw-bold mb-3 text-white text-uppercase small">Legal</h6>
                     <ul class="list-unstyled">
                         <li><a href="https://medicianhealthy.github.io/terms-of-use/index.html">Terms of Use</a></li>
                         <li><a href="https://medicianhealthy.github.io/privacy-policy/index.html">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
-                    <h6 class="fw-bold mb-3">Follow Us</h6>
+                    <h6 class="fw-bold mb-3 text-white text-uppercase small">Social</h6>
                     <div class="d-flex gap-3">
                         <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="fs-5"><i class="bi bi-facebook"></i></a>
@@ -173,8 +199,8 @@
                     </div>
                 </div>
             </div>
-            <hr class="my-5 border-secondary">
-            <div class="text-center text-secondary small">
+            <hr class="my-5 border-secondary opacity-25">
+            <div class="text-center small">
                 &copy; 2024 Wise Medical Apps. All magic reserved.
             </div>
         </div>
