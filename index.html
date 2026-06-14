@@ -119,6 +119,22 @@
         .section-title { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; line-height: 1.1; }
         .accent-line { width: 80px; height: 6px; background: var(--wisdom-gold); margin: 24px auto 48px; border-radius: 3px; }
 
+        /* CONSTRUCTION BANNER */
+        .wip-banner {
+            background: var(--wisdom-gold);
+            color: var(--midnight-bg);
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .wip-banner i { margin-right: 8px; }
+
         /* REFINED VECTOR SPARKLING STARS */
         .magic-star {
             position: absolute;
@@ -138,6 +154,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Work In Progress Banner -->
+    <div class="wip-banner">
+        <i class="bi bi-magic"></i> MAGIC UNDER CONSTRUCTION: This site is currently being prepared for our grand premiere.
+    </div>
 
     <!-- Magic Stars Background Layer -->
     <svg style="display: none;">
