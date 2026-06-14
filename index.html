@@ -68,6 +68,11 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.03);
             transition: all 0.5s var(--transition-smooth);
+            top: 40px; /* Offset for WIP banner */
+        }
+
+        @media (max-width: 768px) {
+            .navbar { top: 60px; } /* More space for wrapped banner on small screens */
         }
 
         .btn-magic {
