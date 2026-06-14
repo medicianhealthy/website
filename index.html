@@ -10,125 +10,162 @@
         :root {
             --midnight-bg: #0A192F;
             --midnight-card: #112240;
-            --cyber-blue: #4FC3F7;
-            --magic-lavender: #B39DDB;
-            --wisdom-gold: #FFD700;
-            --text-main: #CCD6F6;
-            --text-muted: #8892B0;
+            --cyber-blue: #67E8F9;
+            --magic-lavender: #C4B5FD;
+            --wisdom-gold: #FACC15;
+            --text-main: #E2E8F0;
+            --text-muted: #94A3B8;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
         body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--midnight-bg); color: var(--text-main); overflow-x: hidden; }
 
-        /* MAGIC BACKGROUND ANIMATION */
+        /* HIGH-END REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--transition-smooth);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        /* DRAWING LOGO ANIMATION */
+        .draw-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2.5s ease-out forwards;
+        }
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* DYNAMIC NEBULA */
         body::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background:
-                radial-gradient(circle at 20% 30%, rgba(103, 58, 183, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(33, 150, 243, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(103, 58, 183, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(33, 150, 243, 0.1) 0%, transparent 40%);
             z-index: -1;
-            animation: nebulaFlow 20s ease-in-out infinite alternate;
+            animation: nebulaDrift 25s ease-in-out infinite alternate;
+        }
+        @keyframes nebulaDrift {
+            from { transform: scale(1) rotate(0deg); }
+            to { transform: scale(1.3) rotate(5deg); }
         }
 
-        @keyframes nebulaFlow {
-            0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.2) translate(2%, 2%); }
+        .hero-section { padding: 160px 0 100px; position: relative; }
+
+        .navbar {
+            background-color: rgba(10, 25, 47, 0.8) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.5s var(--transition-smooth);
         }
 
-        .hero-section {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        /* FLOATING HERO ELEMENTS */
-        .floating-element {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* TWINKLING STARS (App-Mirror) */
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: twinkle var(--duration) ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.2); }
-        }
-
-        .navbar { background-color: rgba(10, 25, 47, 0.8) !important; backdrop-filter: blur(15px); }
-        .navbar-brand { font-weight: 800; color: white !important; letter-spacing: 1px; }
         .btn-magic {
             background: var(--wisdom-gold);
             color: var(--midnight-bg);
-            border-radius: 8px;
-            padding: 12px 30px;
-            font-weight: 700;
-            transition: all 0.3s;
+            border-radius: 12px;
+            padding: 14px 36px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s var(--transition-smooth);
             border: none;
+            box-shadow: 0 4px 0px #b49300;
         }
         .btn-magic:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
-            background: #e6c200;
+            box-shadow: 0 12px 30px rgba(250, 204, 21, 0.3);
+            background: #fde047;
             color: var(--midnight-bg);
         }
+
         .feature-card {
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            background: var(--midnight-card);
-            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 48px;
+            background: rgba(17, 34, 64, 0.4);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s var(--transition-smooth);
             height: 100%;
         }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--cyber-blue); }
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--wisdom-gold);
-            margin-bottom: 20px;
+        .feature-card:hover {
+            background: rgba(17, 34, 64, 0.8);
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--cyber-blue);
         }
-        .footer { background: #060e1f; color: var(--text-muted); padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
-        .footer a:hover { color: var(--wisdom-gold); }
+
         .app-screenshot {
-            border-radius: 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border-radius: 48px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
             max-width: 320px;
-            border: 4px solid var(--midnight-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            transition: all 0.8s var(--transition-smooth);
         }
-        .section-title { color: white; font-weight: 800; margin-bottom: 1rem; }
-        .accent-line { width: 60px; height: 4px; background: var(--wisdom-gold); margin: 0 auto 30px; border-radius: 2px; }
-        .logo-svg { width: 180px; height: auto; margin-bottom: 20px; }
+        .app-screenshot:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
+        }
+
+        .section-title { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; line-height: 1.1; }
+        .accent-line { width: 80px; height: 6px; background: var(--wisdom-gold); margin: 24px auto 48px; border-radius: 3px; }
+
+        /* REFINED VECTOR SPARKLING STARS */
+        .magic-star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            fill: var(--wisdom-gold);
+            opacity: 0;
+            z-index: -1;
+            filter: drop-shadow(0 0 5px var(--wisdom-gold));
+            animation: vectorTwinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes vectorTwinkle {
+            0%, 100% { transform: scale(0.3) rotate(0deg); opacity: 0.1; }
+            50% { transform: scale(1.1) rotate(90deg); opacity: 0.7; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Magic Stars Background Layer -->
+    <svg style="display: none;">
+        <symbol id="star-icon" viewBox="0 0 512 512">
+            <path d="M256 0 L285 190 L512 256 L285 322 L256 512 L227 322 L0 256 L227 190 Z" />
+        </symbol>
+    </svg>
+
+    <div class="stars-container">
+        <svg class="magic-star" style="top: 15%; left: 8%; --duration: 4s;"><use href="#star-icon"/></svg>
+        <svg class="magic-star" style="top: 25%; left: 85%; --duration: 6s;"><use href="#star-icon"/></svg>
+        <svg class="magic-star" style="top: 65%; left: 12%; --duration: 5s;"><use href="#star-icon"/></svg>
+        <svg class="magic-star" style="top: 80%; left: 78%; --duration: 8s;"><use href="#star-icon"/></svg>
+        <svg class="magic-star" style="top: 45%; left: 45%; --duration: 7s; width: 12px; height: 12px;"><use href="#star-icon"/></svg>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                WISE MEDICAL APPS
-            </a>
+            <a class="navbar-brand fw-black" href="#">WISE MEDICAL APPS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#apps">Our Apps</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Innovation</a></li>
                     <li class="nav-item"><a class="nav-link" href="/privacy-policy/index.html">Privacy</a></li>
-                    <li class="nav-item"><a class="ms-lg-3 btn btn-magic" href="#">Get the App</a></li>
+                    <li class="nav-item"><a class="ms-lg-4 btn btn-magic" href="#">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -136,74 +173,68 @@
 
     <!-- Hero Section -->
     <header class="hero-section">
-        <!-- Background Stars -->
-        <div class="star" style="top: 15%; left: 10%; width: 2px; height: 2px; --duration: 3s;"></div>
-        <div class="star" style="top: 25%; left: 85%; width: 3px; height: 3px; --duration: 5s;"></div>
-        <div class="star" style="top: 70%; left: 15%; width: 2px; height: 2px; --duration: 4s;"></div>
-        <div class="star" style="top: 85%; left: 75%; width: 3px; height: 3px; --duration: 7s;"></div>
-        <div class="star" style="top: 40%; left: 50%; width: 1px; height: 1px; --duration: 2s;"></div>
+        <!-- Floating Stars in Hero -->
+        <svg class="magic-star" style="top: 20%; left: 15%; --duration: 3.5s; width: 24px; height: 24px;"><use href="#star-icon"/></svg>
+        <svg class="magic-star" style="top: 15%; left: 80%; --duration: 5s; width: 18px; height: 18px;"><use href="#star-icon"/></svg>
+        <svg class="magic-star" style="top: 70%; left: 85%; --duration: 4.5s; width: 20px; height: 20px;"><use href="#star-icon"/></svg>
 
-        <div class="container text-center text-lg-start">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="mb-4 floating-element" style="animation-delay: 1s;">
-                        <svg class="logo-svg" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="256" cy="256" r="200" fill="url(#glow_grad)" opacity="0.15"/>
+                <div class="col-lg-6 text-center text-lg-start">
+                    <div class="reveal active">
+                        <svg class="mb-5" width="120" height="120" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
-                              <linearGradient id="glow_grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#673AB7;" />
-                                <stop offset="100%" style="stop-color:#2196F3;" />
-                              </linearGradient>
                               <linearGradient id="line_grad" x1="0%" y1="50%" x2="100%" y2="50%">
                                 <stop offset="0%" style="stop-color:#4FC3F7;" />
                                 <stop offset="100%" style="stop-color:#B39DDB;" />
                               </linearGradient>
                             </defs>
-                            <path d="M120 300 C 160 300, 180 120, 220 120 C 260 120, 280 240, 320 240 C 360 240, 380 80, 420 80"
-                                  stroke="url(#line_grad)" stroke-width="24" stroke-linecap="round" fill="none" opacity="0.9"/>
-                            <path d="M220 60 L226 80 L245 85 L226 90 L220 110 L214 90 L195 85 L214 80 Z" fill="#FFD700"/>
-                            <path d="M420 30 L424 45 L440 50 L424 55 L420 70 L416 55 L400 50 L416 45 Z" fill="#FFD700"/>
+                            <circle cx="256" cy="256" r="230" stroke="white" stroke-opacity="0.1" stroke-width="4" />
+                            <path class="draw-path" d="M120 300 C 160 300, 180 120, 220 120 C 260 120, 280 240, 320 240 C 360 240, 380 80, 420 80"
+                                  stroke="url(#line_grad)" stroke-width="32" stroke-linecap="round" fill="none"/>
+                            <path d="M220 60 L226 80 L245 85 L226 90 L220 110 L214 90 L195 85 L214 80 Z" fill="#FFD700" />
                         </svg>
                     </div>
-                    <h1 class="display-3 fw-bold mb-4" style="color: white;">Smart Health, <br><span style="color: var(--wisdom-gold);">Masterfully Crafted.</span></h1>
-                    <p class="lead mb-5" style="color: var(--text-muted);">Wise Medical Apps bridges the gap between clinical precision and digital magic, empowering your health journey.</p>
-                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                        <a href="#" class="btn btn-outline-light btn-lg px-4 py-3"><i class="bi bi-google-play me-2 text-warning"></i>Google Play</a>
-                        <a href="#features" class="btn btn-magic btn-lg px-4 py-3">Explore Magic</a>
+                    <h1 class="section-title mb-4 reveal active stagger-1" style="color: white;">Smart Health,<br><span style="color: var(--wisdom-gold);">Masterfully Crafted.</span></h1>
+                    <p class="lead mb-5 reveal active stagger-2" style="color: var(--text-muted); font-size: 1.4rem;">Wise Medical Apps bridges the gap between clinical precision and digital magic.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start reveal active stagger-3">
+                        <a href="#" class="btn btn-magic">Explore Magic</a>
+                        <a href="#" class="btn btn-outline-light btn-lg px-4" style="border-radius: 12px; border-width: 2px;">Google Play</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0 text-center">
-                    <img src="https://via.placeholder.com/300x600/112240/FFD700?text=Medication+Wizard" alt="App Screenshot" class="app-screenshot img-fluid floating-element">
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center reveal active stagger-2">
+                    <img src="https://via.placeholder.com/340x680/112240/FFD700?text=Medication+Wizard" alt="App Screenshot" class="app-screenshot img-fluid">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Features Section -->
+    <!-- Innovation Section -->
     <section id="features" class="py-5">
         <div class="container py-5 text-center">
-            <h2 class="section-title">The Foundation of Wisdom</h2>
-            <div class="accent-line"></div>
-            <div class="row g-4 mt-4">
-                <div class="col-md-4">
+            <h2 class="section-title reveal">The Foundation<br>of Wisdom</h2>
+            <div class="accent-line reveal stagger-1"></div>
+
+            <div class="row g-5 mt-4">
+                <div class="col-md-4 reveal stagger-1">
                     <div class="feature-card">
                         <i class="bi bi-stars feature-icon"></i>
-                        <h4 class="text-white">Magical Reminders</h4>
-                        <p class="small" style="color: var(--text-muted);">Smart notifications that respect your sleep patterns and ensure you never miss a dose.</p>
+                        <h3 class="text-white mb-3">Magical Reminders</h3>
+                        <p style="color: var(--text-muted);">Smart notifications that respect your sleep patterns and ensure you never miss a dose.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal stagger-2">
                     <div class="feature-card">
                         <i class="bi bi-shield-lock feature-icon"></i>
-                        <h4 class="text-white">Absolute Privacy</h4>
-                        <p class="small" style="color: var(--text-muted);">Your medical data never leaves your device. We believe your health is your business.</p>
+                        <h3 class="text-white mb-3">Absolute Privacy</h3>
+                        <p style="color: var(--text-muted);">Your medical data never leaves your device. We believe your health is your business.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal stagger-3">
                     <div class="feature-card">
                         <i class="bi bi-lightning-charge feature-icon"></i>
-                        <h4 class="text-white">Insightful Analytics</h4>
-                        <p class="small" style="color: var(--text-muted);">Visualize your progress with beautiful charts designed to help you stay on track.</p>
+                        <h3 class="text-white mb-3">Insightful Analytics</h3>
+                        <p style="color: var(--text-muted);">Visualize your progress with beautiful charts designed to help you stay on track.</p>
                     </div>
                 </div>
             </div>
@@ -211,53 +242,55 @@
     </section>
 
     <!-- Support Section -->
-    <section id="support" class="py-5" style="background: var(--midnight-card);">
+    <section id="support" class="py-5" style="background: rgba(17, 34, 64, 0.2);">
         <div class="container py-5 text-center">
-            <h2 class="text-white mb-4">Need Help with the Magic?</h2>
-            <p class="lead mb-4" style="color: var(--text-muted);">Our specialized support wizards are standing by to assist you.</p>
-            <a href="mailto:medicationwizard@gmail.com" class="btn btn-magic btn-lg">Contact Magic Support</a>
+            <h2 class="text-white mb-4 reveal">Need Help with the Magic?</h2>
+            <p class="lead mb-5 reveal stagger-1" style="color: var(--text-muted);">Our specialized support wizards are standing by to assist you.</p>
+            <div class="reveal stagger-2">
+                <a href="mailto:medicationwizard@gmail.com" class="btn btn-magic btn-lg">Contact Magic Support</a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="fw-bold mb-3 text-white">WISE MEDICAL APPS</h5>
-                    <p class="small">Pioneering the next generation of intuitive, patient-centered mobile health solutions.</p>
-                </div>
-                <div class="col-lg-2 offset-lg-2 mb-4">
-                    <h6 class="fw-bold mb-3 text-white text-uppercase small">Company</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#apps">Our Apps</a></li>
-                        <li><a href="mailto:medicationwizard@gmail.com">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 mb-4">
-                    <h6 class="fw-bold mb-3 text-white text-uppercase small">Legal</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="/terms-of-use/index.html">Terms of Use</a></li>
-                        <li><a href="/privacy-policy/index.html">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-3 text-white text-uppercase small">Social</h6>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#" class="fs-5"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="fs-5"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
+    <footer class="footer py-5 border-top border-secondary border-opacity-10 mt-5">
+        <div class="container text-center">
+            <p class="fw-bold text-white mb-2">WISE MEDICAL APPS</p>
+            <p class="small text-muted mb-4">Pioneering the next generation of patient-centered health solutions.</p>
+            <div class="d-flex justify-content-center gap-4 small mb-4">
+                <a href="/terms-of-use/index.html">Terms</a>
+                <a href="/privacy-policy/index.html">Privacy</a>
             </div>
-            <hr class="my-5 border-secondary opacity-25">
-            <div class="text-center small">
-                &copy; 2024 Wise Medical Apps. All magic reserved.
-            </div>
+            <p class="x-small opacity-30">&copy; 2024 Wise Medical Apps. All magic reserved.</p>
         </div>
     </footer>
 
+    <script>
+        // SKAI-STYLE SCROLL REVEAL LOGIC
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
