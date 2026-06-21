@@ -33,10 +33,20 @@
             max-width: 850px;
             margin: -40px auto 0;
             background: var(--midnight-card);
-            padding: 60px;
+            padding: 40px;
             border-radius: 32px;
             box-shadow: 0 40px 100px rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.05);
+        }
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 24px;
+                margin-top: -20px;
+                border-radius: 20px;
+            }
+            .contact-box p {
+                word-break: break-all;
+            }
         }
         h1 { font-weight: 900; letter-spacing: -1px; color: white; }
         h2 { color: var(--cyber-blue); font-weight: 700; margin-top: 45px; margin-bottom: 20px; font-size: 1.5rem; }
@@ -60,6 +70,14 @@
             font-weight: 700;
             color: var(--text-muted);
             border-left: 4px solid var(--cyber-blue);
+        }
+
+        .contact-box {
+            background: rgba(103, 232, 249, 0.05);
+            padding: 32px;
+            border-radius: 20px;
+            border: 1px solid rgba(103, 232, 249, 0.2);
+            margin-top: 60px;
         }
 
         .back-link {
@@ -128,8 +146,10 @@
             <h2>8. Governing Law</h2>
             <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Wise Medical Apps is registered.</p>
 
-            <div class="mt-5 pt-4 border-top border-secondary border-opacity-10 text-center">
-                <p class="small text-muted mb-0">For legal inquiries: <strong>medicationwizard@gmail.com</strong></p>
+            <div class="contact-box">
+                <h3 class="h5 text-white mb-3">Contact Us</h3>
+                <p>If you have any questions or suggestions about our Terms of Use, please reach out to us at:</p>
+                <p class="fw-bold" style="color: var(--wisdom-gold);">medicationwizard@gmail.com</p>
             </div>
         </div>
     </div>
